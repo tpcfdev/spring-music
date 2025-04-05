@@ -6,6 +6,15 @@ applications:
   path: build/libs/spring-music-1.0.jar
   buildpacks:
    - java_buildpack_offline
+  health-check-type: http
+  health-check-http-endpoint: /actuator/health
+  health-check-invocation-timeout: 30
+  readiness-health-check-type: http
+  readiness-health-check-http-endpoint: /actuator/health
+  readiness-health-check-invocation-timeout: 60
+  log-rate-limit-per-second: 24KB
+  services:
+    - my-autoscaler
   env:
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
     SPRING_PROFILES_ACTIVE: http2
