@@ -15,6 +15,9 @@ applications:
   log-rate-limit-per-second: 24KB
   services:
     - my-autoscaler
+    - name: log-forwarder
+      parameters:
+        log_group: spring-music-logs
   env:
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
     SPRING_PROFILES_ACTIVE: http2
